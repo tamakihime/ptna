@@ -10,7 +10,7 @@ class ptna:
         　 @param name ptnaオブジェクトの名前
         """
         self.name = name
-        self.responder = Responder('What')
+        self.responder = RandomResponder('Random')
 
     def dialogue(self, input):
         """ 応答オブジェクトresponse()を呼び出して

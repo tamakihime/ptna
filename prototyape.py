@@ -1,22 +1,4 @@
-class Responder:
-    """応答クラス
-    """
-    def __init__(self, name):
-        """Responderオブジェクトの名前をnameに格納
-
-            @param name Responder オブジェクトの名前
-        """
-        self.name = name
-
-    def response(self, input):
-        """応答文字列を作って返す
-
-            @param input 入力された文字列　
-        """
-        return '{}ってなぁに？'.format(input)
-###############################################################
-#実行ブロック
-###############################################################
+from ptna import *
 
 
 def prompt(obj):

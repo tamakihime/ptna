@@ -1,5 +1,6 @@
 import random
 
+
 class Responder:
     """応答クラス
     """
@@ -21,7 +22,7 @@ class Responder:
 class RepeatResponder(Responder):
     """オウム返しのためのサブクラス
     """
-    def response(selfself,input):
+    def response(self, input):
         """応答文字を作って返す
             ＠param input入力された文字列
         """
@@ -40,4 +41,5 @@ class RandomResponder(Responder):
         self.responses = ['いい天気だね', '君はパーリーピーポー', '10円拾った']
 
     def response(self, input):
-        return (random.chice(self.response))
+
+        return random.choice(self.responses)
