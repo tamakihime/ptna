@@ -38,7 +38,45 @@ class RandomResponder(Responder):
 
         """
         super().__init__(name)
-        self.responses = ['いい天気だね', '君はパーリーピーポー', '10円拾った']
+        # ランダム辞書格納ようのインスタンス構築
+        self.responses = []
+        # ランダム辞書をオープン
+        rfile = open('dictionary/random.txt', 'r', encoding='utf_8')
+        # 各行を用佐とするリストを取得
+        r_lines = rfile.readlines()
+        rfile.close()
+        # 末尾の改行と空白文字を取り除いてインスタンス変数に格納
+        for line in r_lines:
+            str = line.rstrip('\n')
+            if(str!=''):
+                self.responses.append(str)
+
+    def response(self, input):
+
+        return random.choice(self.responses)
+
+
+class HasdouResponder(Responder):
+    """破道を返すためのサブクラス
+    """
+    def __init__(self, name):
+        """スーパークラスの__init__（）を呼び出す
+
+
+        """
+        super().__init__(name)
+        # ランダム辞書格納ようのインスタンス構築
+        self.responses = []
+        # ランダム辞書をオープン
+        rfile = open('dictionary/hadou.txt', 'r', encoding='utf_8')
+        # 各行を用佐とするリストを取得
+        r_lines = rfile.readlines()
+        rfile.close()
+        # 末尾の改行と空白文字を取り除いてインスタンス変数に格納
+        for line in r_lines:
+            str = line.rstrip('\n')
+            if(str!=''):
+                self.responses.append(str)
 
     def response(self, input):
 
