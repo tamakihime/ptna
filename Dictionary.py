@@ -33,3 +33,5 @@ class Dictionary:
         # 'phrases'キー　:応答列
         for line in self.new_lines:
             ptn, prs = line.split('\t')
+            self.pattern.setdefault('pattern', []).append(ptn)
+            self.pattern.setdefault('phrase', []).append(prs)
