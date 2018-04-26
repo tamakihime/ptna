@@ -52,6 +52,8 @@ def talk():
         putlog(prompt() + response)
         # 入力データをクリア
         entry.delete(0, tk.END)
+
+
 # ==========================================
 
 # 画面を作成する関数
@@ -71,7 +73,7 @@ def run():
     root.title('Intelligent Agent :')
     # フォントの用意
     font = ('Helevetiva', 14)
-    font_log=('Helevetiva', 11)
+    font_log = ('Helevetiva', 11)
 
     # メニューバーの作成
     menubar = tk.Menu(root)
@@ -173,3 +175,19 @@ def run():
     )
 
     # リストボックスとスクロールバーを連動させる
+    lb.configure(yscrollcommand=sb1.set)
+    lb.configure(xscrollcommand=sb2.set)
+    # gridでリストボックス、スクロールバーを画面上に配置
+    lb.grid(row=0, column=0)
+    sb1.grid(row=0, column=1, sticky=tk.NS)
+    sb2.grid(row=0, column=0, sticky=tk.EW)
+
+    # メインループ
+    root.mainloop()
+
+
+# ============================================
+# プログラムの起点
+# ============================================
+if __name__ == '__main__':
+    run()
