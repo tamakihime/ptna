@@ -84,3 +84,92 @@ def run():
     action = tk.IntVar()
     optionmenue = tk.Menu(menubar)
     menubar.add_cascade(label='オプション', menu=optionmenue)
+    optionmenue.add_radiobutton(
+        label='Responderを表示',
+        variable=action,
+        value=0
+    )
+    optionmenue.add_radiobutton(
+        label='Responderを表示しない',
+        variable=action,
+        value=1
+    )
+
+    # キャンバスの作成
+    canvas = tk.Canvas(
+        root,
+        width=500,
+        height=300,
+        relief=tk.RIDGE,
+        bd=2
+    )
+    canvas.place(x=370, y=0)
+
+    img = tk.PhotoImage(file='img1.gif')
+    canvas.create_image(
+        0,
+        0,
+        image=img,
+        anchor=tk.NW
+    )
+
+    # 応答エリアの作成
+    response_area = tk.Label(
+        root,
+        width=50,
+        height=10,
+        bg='yellow',
+        font=font,
+        relief=tk.RIDGE,
+        bd=2
+    )
+    response_area.place(x=370, y=305)
+
+    # フレームの作成
+    frame = tk.Frame(
+        root,
+        relief=tk.RIDGE,
+        borderwidth=4
+    )
+
+    # 入力ボックスの作成
+    entry = tk.Entry(
+        frame,
+        width=70,
+        font=font
+    )
+    entry.pack(side=tk.LEFT)
+    entry.focus_set()
+
+    # ボタンの作成
+    button = tk.Button(
+        frame,
+        width=15,
+        text='話す',
+        command=talk
+    )
+    button.pack(side=tk.LEFT)
+    frame.place(x=30, y=520)
+
+    # リストボックスを作成
+    lb = tk.Listbox(
+        root,
+        width=42,
+        height=30,
+        font=font_log,
+    )
+    # 縦のスクロールバーを作成
+    sb1 = tk.Scrollbar(
+        root,
+        orient=tk.Variable,
+        command=lb.yview
+    )
+
+    # 横のスクロールバーを作成
+    sb2 = tk.Scrollbar(
+        root,
+        orient=tk.HORIZONTAL,
+        command=lb.xview
+    )
+
+    # リストボックスとスクロールバーを連動させる
