@@ -163,7 +163,7 @@ def run():
     # 縦のスクロールバーを作成
     sb1 = tk.Scrollbar(
         root,
-        orient=tk.Variable,
+        orient=tk.VERTICAL,
         command=lb.yview
     )
 
@@ -180,7 +180,7 @@ def run():
     # gridでリストボックス、スクロールバーを画面上に配置
     lb.grid(row=0, column=0)
     sb1.grid(row=0, column=1, sticky=tk.NS)
-    sb2.grid(row=0, column=0, sticky=tk.EW)
+    sb2.grid(row=1, column=0, sticky=tk.EW)
 
     # メインループ
     root.mainloop()
