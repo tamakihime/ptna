@@ -43,7 +43,7 @@ class Dictionary:
             str = line.rstrip('\n')
             if str != '':
                 self.noguti.append(str)
-
+        """
         # パターン辞書オープン
         pfile = open('dictionary/pattern.txt', 'r', encoding='utf_8')
         # 各行を要素としてリストに格納
@@ -65,3 +65,4 @@ class Dictionary:
             ptn, prs = line.split('\t')
             self.pattern.setdefault('pattern', []).append(ptn)
             self.pattern.setdefault('phrases', []).append(prs)
+        """

@@ -1,3 +1,4 @@
+from Dictionary import Dictionary
 from responder import *
 
 
@@ -11,14 +12,16 @@ class ptna:
         　 @param name ptnaオブジェクトの名前
         """
         self.name = name
+        # Dictionaryを生成
+        self.dictionary = Dictionary()
         # randomresponderを生成
-        self.res_random = RandomResponder('Random')
+        self.res_random = RandomResponder('Random',self.dictionary)
         # RepeatResponderを生成
-        self.res_what = RepeatResponder('Repeat')
+        self.res_what = RepeatResponder('Repeat', self.dictionary)
         # Hadouresponderを生成
-        self.res_hadou = HasdouResponder('破道')
+        self.res_hadou = HasdouResponder('破道', self.dictionary)
         # Nogutiresponderを生成
-        self.res_Noguti = NogutiResponder('By野口')
+        self.res_Noguti = NogutiResponder('By野口',self.dictionary)
         # 初期値をセット
         self.responder = self.res_what
 
