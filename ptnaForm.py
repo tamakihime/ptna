@@ -72,26 +72,26 @@ def run():
     # ウィンドウのタイトルを変更
     root.title('Intelligent Agent :')
     # フォントの用意
-    font = ('Helevetiva', 14)
-    font_log = ('Helevetiva', 11)
+    font = ('Helevetica', 14)
+    font_log = ('Helevetica', 11)
 
     # メニューバーの作成
     menubar = tk.Menu(root)
-    root.config(menue=menubar)
+    root.config(menu=menubar)
     # [ファイル]メニュー作成
-    filemenue = tk.Menu(menubar)
-    menubar.add_cascade(label='オプション', menu=filemenue)
-    filemenue.add_command(labei='閉じる', command=root.destroy)
+    filemenu = tk.Menu(menubar)
+    menubar.add_cascade(label='オプション', menu=filemenu)
+    filemenu.add_command(label='閉じる', command=root.destroy)
     # オプションメニュー
     action = tk.IntVar()
-    optionmenue = tk.Menu(menubar)
-    menubar.add_cascade(label='オプション', menu=optionmenue)
-    optionmenue.add_radiobutton(
+    optionmenu = tk.Menu(menubar)
+    menubar.add_cascade(label='オプション', menu=optionmenu)
+    optionmenu.add_radiobutton(
         label='Responderを表示',
         variable=action,
         value=0
     )
-    optionmenue.add_radiobutton(
+    optionmenu.add_radiobutton(
         label='Responderを表示しない',
         variable=action,
         value=1
