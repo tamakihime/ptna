@@ -83,7 +83,7 @@ class HasdouResponder(Responder):
         return random.choice(self.responses)
 
 class NogutiResponder(Responder):
-    """破道を返すためのサブクラス
+    """野口くん語録を返すためのサブクラス
     """
     def __init__(self, name):
         """スーパークラスの__init__（）を呼び出す
@@ -94,7 +94,7 @@ class NogutiResponder(Responder):
         # ランダム辞書格納ようのインスタンス構築
         self.responses = []
         # ランダム辞書をオープン
-        rfile = open('dictionary/hadou.txt', 'r', encoding='utf_8')
+        rfile = open('dictionary/Noguti.txt', 'r', encoding='utf_8')
         # 各行を用佐とするリストを取得
         r_lines = rfile.readlines()
         rfile.close()

@@ -17,6 +17,8 @@ class ptna:
         self.res_what = RepeatResponder('Repeat')
         # Hadouresponderを生成
         self.res_hadou = HasdouResponder('破道')
+        # Nogutiresponderを生成
+        self.res_Noguti = NogutiResponder('By野口')
         # 初期値をセット
         self.responder = self.res_what
 
@@ -28,6 +30,8 @@ class ptna:
         """
         # 0か１をランダムセレクト 0ならrandomresponder をセット　1ならrepeatresponderをセット
         x = random.randint(0, 1)
+        if input =="野口くん発言集":
+            x = 20000
         if input == "破道":
             x = 10000
         if x == 1:
@@ -36,6 +40,8 @@ class ptna:
             self.responder = self.res_random
         if x == 10000:
             self.responder = self.res_hadou
+        if x == 20000:
+            self.responder = self.res_Noguti
 
         return self.responder.response(input)
 
