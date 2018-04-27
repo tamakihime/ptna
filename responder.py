@@ -27,6 +27,7 @@ class Responder:
         """
         return self.name
 
+
 class RepeatResponder(Responder):
     """オウム返しのためのサブクラス
     """
@@ -52,10 +53,27 @@ class HasdouResponder(Responder):
 
         return random.choice(self.dictionary.hadou)
 
+
 class NogutiResponder(Responder):
     """野口くん語録を返すためのサブクラス
     """
     def response(self, input):
 
         return random.choice(self.dictionary.noguti)
+class tyuusennResponder(Responder):
+    """抽選システム
+
+    """
+    def response(self, input):
+
+        return random.choice(self.dictionary.tyuusenn)
+class ttyuusennResponder(Responder):
+    """
+    詐欺用ちゅうせんしすてむ
+    """
+    def response(self, input):
+
+        return random.choice(self.dictionary.ttyuusenn)
+
+
 

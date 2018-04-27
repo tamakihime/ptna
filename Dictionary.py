@@ -43,6 +43,34 @@ class Dictionary:
             str = line.rstrip('\n')
             if str != '':
                 self.noguti.append(str)
+
+        # 抽選見せよう辞書格納ようのインスタンス構築
+        self.tyuusenn = []
+        # 抽選見せよう辞書をオープン
+        tfile = open('dictionary/tyuusenn.txt', 'r', encoding='utf_8')
+        # 各行を用佐とするリストを取得
+        t_lines = tfile.readlines()
+        tfile.close()
+        # 末尾の改行と空白文字を取り除いてインスタンス変数に格納
+        self.tyuusenn = []
+        for line in t_lines:
+            str = line.rstrip('\n')
+            if str != '':
+                self.tyuusenn.append(str)
+
+        # 抽選詐欺辞書格納ようのインスタンス構築
+        self.ttyuusenn = []
+        # 抽選詐欺辞書をオープン
+        ttfile = open('dictionary/tyuusenn1.txt', 'r', encoding='utf_8')
+        # 各行を用佐とするリストを取得
+        tt_lines = ttfile.readlines()
+        tfile.close()
+        # 末尾の改行と空白文字を取り除いてインスタンス変数に格納
+        self.ttyuusenn = []
+        for line in tt_lines:
+            str = line.rstrip('\n')
+            if str != '':
+                self.ttyuusenn.append(str)
         """
         # パターン辞書オープン
         pfile = open('dictionary/pattern.txt', 'r', encoding='utf_8')

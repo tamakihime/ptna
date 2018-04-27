@@ -21,7 +21,11 @@ class ptna:
         # Hadouresponderを生成
         self.res_hadou = HasdouResponder('破道', self.dictionary)
         # Nogutiresponderを生成
-        self.res_Noguti = NogutiResponder('By野口',self.dictionary)
+        self.res_Noguti = NogutiResponder('By野口', self.dictionary)
+        # tyuusennを生成
+        self.res_tyuusenn = tyuusennResponder('抽選', self.dictionary)
+        # ttyuusenn
+        self.res_ttyuusenns = ttyuusennResponder('抽選',self.dictionary)
         # 初期値をセット
         self.responder = self.res_what
 
@@ -37,6 +41,10 @@ class ptna:
             x = 20000
         if input == "破道":
             x = 10000
+        if input =="抽選":
+            x = 30000
+        if input =='抽選　':
+            x = 40000
         if x == 1:
             self.responder = self.res_what
         if x == 0:
@@ -45,6 +53,10 @@ class ptna:
             self.responder = self.res_hadou
         if x == 20000:
             self.responder = self.res_Noguti
+        if x == 30000:
+            self.responder = self.res_tyuusenn
+        if x == 40000:
+            self.responder = self.res_ttyuusenns
 
         return self.responder.response(input)
 
