@@ -46,6 +46,7 @@ class RandomResponder(Responder):
 
         return random.choice(self.dictionary.random)
 
+
 class PatternResponder(Responder):
     """
     パターン反応用サブクラス
@@ -86,6 +87,8 @@ class NogutiResponder(Responder):
     def response(self, input):
 
         return random.choice(self.dictionary.noguti)
+
+
 class tyuusennResponder(Responder):
     """抽選システム
 
@@ -93,6 +96,8 @@ class tyuusennResponder(Responder):
     def response(self, input):
 
         return random.choice(self.dictionary.tyuusenn)
+
+
 class ttyuusennResponder(Responder):
     """
     詐欺用ちゅうせんしすてむ

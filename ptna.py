@@ -15,11 +15,11 @@ class ptna:
         # Dictionaryを生成
         self.dictionary = Dictionary()
         # randomresponderを生成
-        self.res_random = RandomResponder('Random',self.dictionary)
+        self.res_random = RandomResponder('Random', self.dictionary)
         # RepeatResponderを生成
         self.res_what = RepeatResponder('Repeat', self.dictionary)
         # PatternResponderを生成
-        self.res_pattern = PatternResponder('Pattern',self.dictionary)
+        self.res_pattern = PatternResponder('Pattern', self.dictionary)
         # Hadouresponderを生成
         self.res_hadou = HasdouResponder('破道', self.dictionary)
         # Nogutiresponderを生成
@@ -27,7 +27,7 @@ class ptna:
         # tyuusennを生成
         self.res_tyuusenn = tyuusennResponder('抽選', self.dictionary)
         # ttyuusenn
-        self.res_ttyuusenns = ttyuusennResponder('抽選',self.dictionary)
+        self.res_ttyuusenns = ttyuusennResponder('抽選', self.dictionary)
         # 初期値をセット
         self.responder = self.res_what
 
@@ -39,7 +39,7 @@ class ptna:
         """
         # 0か１をランダムセレクト 0ならrandomresponder をセット　1ならrepeatresponderをセット
         x = random.randint(0, 100)
-        if input =="野口くん発言集":
+        if input == "野口くん発言集":
             x = 20000
         if input == "破道":
             x = 10000
@@ -73,3 +73,53 @@ class ptna:
         """ptnaオブジェクトの名前を返す
         """
         return self.name
+
+
+class Emotion:
+    """
+    ピティナの感情モデル
+    """
+
+
+    # 　機嫌値の上限/下限と回復地を設定
+
+    MOOD_MIN = -15
+    MOOD_MAX = 15
+    MOOD_RECOVERY = 0.5
+
+    def __init__(self,dictionary):
+        # 機嫌値を保持するインスタンス変数
+        self.mood = 0
+
+    def update(self,input):
+        """
+        ユーザーからの入力をパラメータinputで受け取り
+        パターン辞書にマッチさせて起源地を変動させる
+        :param input:
+        :return:
+        """
+        # パターン辞書の各行を繰り返しパターンマッチさせる
+        for ptn_item in self.dictionary.pattern:
+            # パターンマッチすればadjust_mood()でき機嫌値を変動させる
+            if ptn_item.match(input):
+                self.adjust_mood(ptn_item.modify)
+                break
+        # 機嫌をもとに戻す処理
+        if self.mood < 0:
+            self.mood += Emotion.MOOD_RECOVERY
+        elif self.mood > 0:
+            self.mood -= Emotion.MOOD_RECOVERY
+
+    def adjust_mood(self, val):
+        """
+        機嫌値を増減させる
+        :param val:
+        :return:
+        """
+        # 起源地の変数の値を増減させる
+        self.mood += int(val)
+        # 取りうる範囲に制限する
+        if self.mood > Emotion.MOOD_MAX:
+            self.mood = Emotion.MOOD_MAX
+        elif self.mood < Emotion.MOOD_MIN:
+            self.mood = Emotion.MOOD_MIN

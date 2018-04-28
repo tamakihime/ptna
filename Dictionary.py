@@ -1,3 +1,6 @@
+import random
+import re
+
 class Dictionary:
     def __init__(self):
         self.random = []
@@ -91,6 +94,66 @@ class Dictionary:
         # 'phrases'キー　:応答列
         for line in self.new_lines:
             ptn, prs = line.split('\t')
-            self.pattern.setdefault('pattern', []).append(ptn)
-            self.pattern.setdefault('phrases', []).append(prs)
+            self.pattern.append(ParseItem(ptn, prs))
 
+
+class ParseItem:
+    SEPARATOR = '~((-?\d+)##)?(.*)$'
+
+    def __init__(self, pattern, phrases):
+        """
+
+        :param pattern パターン:
+        :param phrases　応答例:
+        """
+        # 辞書のパターンの部分にSEPARATORをパターンマッチさせる
+        m = re.findall(ParseItem.SEPARATOR, pattern)
+        # インスタンス変数modifyに代入
+        self.modify = 0
+        # マッチ結果の整数部分がからでなければ値を再代入
+        if m[0][1]:
+            self.modify = int(m[0][1])
+        # インスタンス変数patternにマッチ結果のパターン部分を代入
+        self.pattern = m[0][2]
+
+        self.phrases = []
+        self.dic = {}
+        # 引数でwたされた応答例を'|'で分割し
+        # 個々の要素に対してパターンマッチさせる
+        # self.phrases[ 'need' : 応答例の整数部分
+        #                'phrase'; 応答例の文字列部]
+        for phrases in phrases.split('|'):
+            # 応答例に対してパターンマッチさせる
+            m = re.findall(ParseItem.SEPARATOR, phrases)
+            # 'need'キーの値を整数部分ｍ[0][1]にする
+            # 'phrase'キーの値を応答文字列ｍ[0][2]にする
+            self.dic['need'] = 0
+            if m[0][1]:
+                self.dic['need'] = int(m[0][1])
+            self.dic['phrase'] = m[0][2]
+            # 作成した辞書をphraseリストに追加
+            self.phrases.append(self.dic.copy())
+
+     def match(self, str):
+         """
+
+         :param str:
+         :return:
+         """
+         return re.search(self.pattern, str)
+
+     def chice (self, mood):
+         """
+         現在の機嫌値と
+         必要な機嫌値を比較して
+         適切な応答例を返す
+         :param mood:
+         :return:
+         """
+         choices = []
+         # self.phrasesが保持するリストの要素（辞書）を反復する
+         for p in self.phrases:
+            # self.phrasesの'need'キーの数値と
+            # パラメータmoodをsuitable（）に渡す
+            #　結果が１であればchoiceリストに追加する
+            if self.suitable(p)
