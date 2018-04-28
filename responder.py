@@ -1,4 +1,5 @@
 import random
+import re
 
 
 class Responder:
@@ -44,6 +45,31 @@ class RandomResponder(Responder):
     def response(self, input):
 
         return random.choice(self.dictionary.random)
+
+class PatternResponder(Responder):
+    """
+    パターン反応用サブクラス
+    """
+    def response(self, input):
+        for ptn, prs in zip(
+            self.dictionary.pattern['pattern'],
+            self.dictionary.pattern['phrases']
+                ):
+            # インプットされた文字列に対して
+            # パターンの値でパターンマッチングを行う
+            m = re.search(ptn, input)
+            # インプットされた文字列がパターンにマッチしている場合
+            if m:
+                # 応答フレーズ(ptn[1])を’｜’で切り分けて
+                # rランダムに一文を取り出す
+                resp = random.choice(prs.split('|'))
+                # 抽出した応答フレーズを返す
+                # 応答フレーズの中に％match％が埋め込まれたいた場合
+                # インプットされた文字列内のパターンマッチした
+                # 文字列に置き換える
+                return re.sub('%match%',m.group(), resp)
+            # パターンマッチ適応不可の場合は、ランダム辞書を呼び出す
+            return random.choice(self.dictionary.random)
 
 
 class HasdouResponder(Responder):

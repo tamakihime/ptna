@@ -71,7 +71,7 @@ class Dictionary:
             str = line.rstrip('\n')
             if str != '':
                 self.ttyuusenn.append(str)
-        """
+
         # パターン辞書オープン
         pfile = open('dictionary/pattern.txt', 'r', encoding='utf_8')
         # 各行を要素としてリストに格納
@@ -85,7 +85,7 @@ class Dictionary:
             if str != '':
                 self.new_lines.append(str)
         # 辞書型のインスタンス変数を用意
-        self.pattern = []
+        self.pattern = {}
         # 一行をタブで切り分けて辞書オブジェクトに格納
         # ’pattern’キー　：正規表現のパターン
         # 'phrases'キー　:応答列
@@ -93,4 +93,4 @@ class Dictionary:
             ptn, prs = line.split('\t')
             self.pattern.setdefault('pattern', []).append(ptn)
             self.pattern.setdefault('phrases', []).append(prs)
-        """
+

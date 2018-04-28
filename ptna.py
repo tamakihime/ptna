@@ -18,6 +18,8 @@ class ptna:
         self.res_random = RandomResponder('Random',self.dictionary)
         # RepeatResponderを生成
         self.res_what = RepeatResponder('Repeat', self.dictionary)
+        # PatternResponderを生成
+        self.res_pattern = PatternResponder('Pattern',self.dictionary)
         # Hadouresponderを生成
         self.res_hadou = HasdouResponder('破道', self.dictionary)
         # Nogutiresponderを生成
@@ -36,27 +38,29 @@ class ptna:
             戻り値　応答文字列
         """
         # 0か１をランダムセレクト 0ならrandomresponder をセット　1ならrepeatresponderをセット
-        x = random.randint(0, 1)
+        x = random.randint(0, 100)
         if input =="野口くん発言集":
             x = 20000
         if input == "破道":
             x = 10000
-        if input =="抽選":
+        if input == "抽選":
             x = 30000
-        if input =='抽選　':
+        if input == '抽選　':
             x = 40000
-        if x == 1:
+        if x <= 60:
+            self.responder = self.res_pattern
+        elif x <= 90:
             self.responder = self.res_what
-        if x == 0:
-            self.responder = self.res_random
-        if x == 10000:
+        elif x == 10000:
             self.responder = self.res_hadou
-        if x == 20000:
+        elif x == 20000:
             self.responder = self.res_Noguti
-        if x == 30000:
+        elif x == 30000:
             self.responder = self.res_tyuusenn
-        if x == 40000:
+        elif x == 40000:
             self.responder = self.res_ttyuusenns
+        else:
+            self.responder = self.res_random
 
         return self.responder.response(input)
 
