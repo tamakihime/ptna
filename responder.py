@@ -14,7 +14,7 @@ class Responder:
         self.name = name
         self.dictionary = Dictionary
 
-    def response(self, input):
+    def response(self, input, mood):
         """応答文字列を作って返す
             常にオーナーライドされる　だって返り値ないもの
             @param input 入力された文字列　
@@ -32,7 +32,7 @@ class Responder:
 class RepeatResponder(Responder):
     """オウム返しのためのサブクラス
     """
-    def response(self, input):
+    def response(self, input, mood):
         """応答文字を作って返す
             ＠param input入力された文字列
         """
@@ -42,7 +42,7 @@ class RepeatResponder(Responder):
 class RandomResponder(Responder):
     """ランダムな応答のためのサブクラス
     """
-    def response(self, input):
+    def response(self, input, mood):
 
         return random.choice(self.dictionary.random)
 
@@ -51,24 +51,22 @@ class PatternResponder(Responder):
     """
     パターン反応用サブクラス
     """
-    def response(self, input):
-        for ptn, prs in zip(
-            self.dictionary.pattern['pattern'],
-            self.dictionary.pattern['phrases']
-                ):
+    def response(self, input, mood):
+        self.resp = None
+        for ptn_item in self.dictionary.pattern:
             # インプットされた文字列に対して
             # パターンの値でパターンマッチングを行う
-            m = re.search(ptn, input)
+            m = ptn_item.match(input)
             # インプットされた文字列がパターンにマッチしている場合
-            if m:
+            if (m):
                 # 応答フレーズ(ptn[1])を’｜’で切り分けて
                 # rランダムに一文を取り出す
-                resp = random.choice(prs.split('|'))
+                self.resp = ptn_item.choices(mood)
                 # 抽出した応答フレーズを返す
                 # 応答フレーズの中に％match％が埋め込まれたいた場合
                 # インプットされた文字列内のパターンマッチした
                 # 文字列に置き換える
-                return re.sub('%match%',m.group(), resp)
+                return re.sub('%match%',m.group(), self.resp)
             # パターンマッチ適応不可の場合は、ランダム辞書を呼び出す
             return random.choice(self.dictionary.random)
 
@@ -76,7 +74,7 @@ class PatternResponder(Responder):
 class HasdouResponder(Responder):
     """破道を返すためのサブクラス
     """
-    def response(self, input):
+    def response(self, input, mood):
 
         return random.choice(self.dictionary.hadou)
 
@@ -84,7 +82,7 @@ class HasdouResponder(Responder):
 class NogutiResponder(Responder):
     """野口くん語録を返すためのサブクラス
     """
-    def response(self, input):
+    def response(self, input, mood):
 
         return random.choice(self.dictionary.noguti)
 
@@ -93,7 +91,7 @@ class tyuusennResponder(Responder):
     """抽選システム
 
     """
-    def response(self, input):
+    def response(self, input, mood):
 
         return random.choice(self.dictionary.tyuusenn)
 
@@ -102,7 +100,7 @@ class ttyuusennResponder(Responder):
     """
     詐欺用ちゅうせんしすてむ
     """
-    def response(self, input):
+    def response(self, input, mood):
 
         return random.choice(self.dictionary.ttyuusenn)
 

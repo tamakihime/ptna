@@ -107,7 +107,7 @@ def run():
     )
     canvas.place(x=370, y=0)
 
-    img = tk.PhotoImage(file='yuuna.gif')
+    img = tk.PhotoImage(file='ptna.gif')
     canvas.create_image(
         0,
         0,

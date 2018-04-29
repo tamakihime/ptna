@@ -133,7 +133,6 @@ class ParseItem:
             self.dic['phrase'] = m[0][2]
             # 作成した辞書をphraseリストに追加
             self.phrases.append(self.dic.copy())
-
      def match(self, str):
          """
 
@@ -142,7 +141,7 @@ class ParseItem:
          """
          return re.search(self.pattern, str)
 
-     def chice (self, mood):
+     def choice (self, mood):
          """
          現在の機嫌値と
          必要な機嫌値を比較して
@@ -156,4 +155,33 @@ class ParseItem:
             # self.phrasesの'need'キーの数値と
             # パラメータmoodをsuitable（）に渡す
             #　結果が１であればchoiceリストに追加する
-            if self.suitable(p)
+            if self.suitable(p['need'], mood):
+                choices.append(p['phrase'])
+            # choicesリストが空であればnoneを返す
+
+            if len(choices) == 0:
+                return None
+                # choicesリストが空でなければランダムに
+                # 応答文字列を選択して返す
+            return random.choice(choices)
+
+
+    def suitable(self, need, mood):
+        """
+        現在の機嫌値が必要機嫌値を
+        上回ってる、または
+        下回ってるかを判定
+        :param need:
+        :param mood:
+        :return:
+        """
+        # 必要機嫌値が0 であればTrueを返す
+        if(need == 0):
+            return True
+        # 必要機嫌値がプラスの場合は機嫌値が必要機嫌値を超えているかどうか判定
+        elif need > 0:
+            return mood > need
+        # 応答例の値がマイナスの場合
+        else:
+            return mood < need
+
