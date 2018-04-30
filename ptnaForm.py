@@ -8,6 +8,8 @@ response_area = None
 lb = None
 action = None
 ptna = ptna('ptna')
+on_canvas = None
+ptyna_image = []
 
 
 def putlog(str):
@@ -28,6 +30,28 @@ def prompt():
     if (action.get()) == 0:
         p += ':' + ptna.responder.name
         return p + '>'
+
+
+def changeImg(img):
+    """ 画像をセットする関数
+    """
+    canvas.itemconfig(
+        on_canvas,
+        image=ptyna_image[img]  # イメージオブジェクトを指定
+    )
+    canvas.update()
+
+
+def change_looks():
+    em = ptna.emotion.mood
+    if -5 <= em <= 5:
+        changeImg(0)
+    elif -10 <= em < -5:
+        changeImg(1)
+    elif -15 <= em < -10:
+        changeImg(2)
+    elif 5 <= em < 15:
+        changeImg(3)
 
 
 def talk():
@@ -53,6 +77,8 @@ def talk():
         # 入力データをクリア
         entry.delete(0, tk.END)
 
+    change_looks()
+
 
 # ==========================================
 
@@ -63,7 +89,7 @@ def talk():
 
 def run():
     # グローバル変数を使用するための記述
-    global entry, response_area, lb, action
+    global entry, response_area, lb, action, on_canvas, ptyna_image, canvas
 
     # メインウィンドウを構築
     root = tk.Tk()
@@ -106,12 +132,16 @@ def run():
         bd=2
     )
     canvas.place(x=370, y=0)
+    # イメージを用意
+    ptyna_image.append(tk.PhotoImage(file="talk.gif"))
+    ptyna_image.append(tk.PhotoImage(file="empty.gif"))
+    ptyna_image.append(tk.PhotoImage(file="angry.gif"))
+    ptyna_image.append(tk.PhotoImage(file="happy.gif"))
 
-    img = tk.PhotoImage(file='ptna.gif')
-    canvas.create_image(
+    on_canvas = canvas.create_image(
         0,
         0,
-        image=img,
+        image=ptyna_image[0],
         anchor=tk.NW
     )
 
