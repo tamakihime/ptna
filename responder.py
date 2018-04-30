@@ -52,25 +52,25 @@ class PatternResponder(Responder):
     パターン反応用サブクラス
     """
     def response(self, input, mood):
+        """ パターンにマッチした場合に応答文字列を作って返す
+
+            @param  input 入力された文字列
+        """
         self.resp = None
         for ptn_item in self.dictionary.pattern:
-            # インプットされた文字列に対して
-            # パターンの値でパターンマッチングを行う
+            # match()でインプット文字列にパターンマッチを行う
             m = ptn_item.match(input)
-            # インプットされた文字列がパターンにマッチしている場合
+            # マッチした場合は機嫌値moodを引数にしてchoice()を実行、
+            # 戻り値の応答文字列、またはNoneを取得
             if (m):
-                # 応答フレーズ(ptn[1])を’｜’で切り分けて
-                # rランダムに一文を取り出す
-                self.resp = ptn_item.choices(mood)
-                # 抽出した応答フレーズを返す
-                # 応答フレーズの中に％match％が埋め込まれたいた場合
-                # インプットされた文字列内のパターンマッチした
-                # 文字列に置き換える
-                return re.sub('%match%',m.group(), self.resp)
-            # パターンマッチ適応不可の場合は、ランダム辞書を呼び出す
-            return random.choice(self.dictionary.random)
-
-
+                self.resp = ptn_item.choice(mood)
+            # choice()の戻り値がNoneでない場合は
+            # 応答例の中の%match%をインプットされた文字列内の
+            # マッチした文字列に置き換える
+            if self.resp != None:
+                return re.sub('%match%', m.group(), self.resp)
+        # パターンマッチしない場合はランダム辞書から返す
+        return random.choice(self.dictionary.random)
 class HasdouResponder(Responder):
     """破道を返すためのサブクラス
     """

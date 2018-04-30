@@ -1,4 +1,4 @@
-from Dictionary import Dictionary
+from Dictionary import *
 from responder import *
 
 
@@ -14,6 +14,8 @@ class ptna:
         self.name = name
         # Dictionaryを生成
         self.dictionary = Dictionary()
+        # emotion を生成
+        self.emotion = Emotion(self.dictionary)
         # randomresponderを生成
         self.res_random = RandomResponder('Random', self.dictionary)
         # RepeatResponderを生成
@@ -37,6 +39,7 @@ class ptna:
             ＠program inputユーザーによって入力された文字列
             戻り値　応答文字列
         """
+        self.emotion.update(input)
         # 0か１をランダムセレクト 0ならrandomresponder をセット　1ならrepeatresponderをセット
         x = random.randint(0, 100)
         if input == "野口くん発言集":
@@ -61,65 +64,54 @@ class ptna:
             self.responder = self.res_ttyuusenns
         else:
             self.responder = self.res_random
-
-        return self.responder.response(input)
-
-    def get_responder_name(self):
-        """ptnaクラスの名前を返す
-        """
-        return self.responder.name
-
-    def get_name(self):
-        """ptnaオブジェクトの名前を返す
-        """
-        return self.name
-
+        print(self.emotion.mood)
+        return self.responder.response(input, self.emotion.mood)
 
 class Emotion:
+    """ ピティナの感情モデル
     """
-    ピティナの感情モデル
-    """
-
-
-    # 　機嫌値の上限/下限と回復地を設定
-
+    # 機嫌値の上限／加減と回復値を設定
     MOOD_MIN = -15
     MOOD_MAX = 15
     MOOD_RECOVERY = 0.5
 
-    def __init__(self,dictionary):
+    def __init__(self, dictionary):
+        """ Dictionaryオブジェクトをdictionaryに格納
+            機嫌値moodを0で初期化
+
+            @param dictionary Dictionaryオブジェクト
+        """
+        self.dictionary = dictionary
         # 機嫌値を保持するインスタンス変数
         self.mood = 0
 
-    def update(self,input):
+    def update(self, input):
+        """ ユーザーからの入力をパラメーターinputで受け取り
+            パターン辞書にマッチさせて機嫌値を変動させる
+
+            @param input ユーザーからの入力
         """
-        ユーザーからの入力をパラメータinputで受け取り
-        パターン辞書にマッチさせて起源地を変動させる
-        :param input:
-        :return:
-        """
+        # 機嫌を徐々にもとに戻す処理
+        if self.mood < 0:
+          self.mood += Emotion.MOOD_RECOVERY
+        elif self.mood > 0:
+          self.mood -= Emotion.MOOD_RECOVERY
         # パターン辞書の各行を繰り返しパターンマッチさせる
         for ptn_item in self.dictionary.pattern:
-            # パターンマッチすればadjust_mood()でき機嫌値を変動させる
+            # パターンマッチすればadjust_mood()で機嫌値を変動させる
             if ptn_item.match(input):
                 self.adjust_mood(ptn_item.modify)
                 break
-        # 機嫌をもとに戻す処理
-        if self.mood < 0:
-            self.mood += Emotion.MOOD_RECOVERY
-        elif self.mood > 0:
-            self.mood -= Emotion.MOOD_RECOVERY
 
     def adjust_mood(self, val):
+        """ 機嫌値を増減させる
+
+            @param val 機嫌変動値
         """
-        機嫌値を増減させる
-        :param val:
-        :return:
-        """
-        # 起源地の変数の値を増減させる
+        # 機嫌値moodの値を機嫌変動値によって増減する
         self.mood += int(val)
-        # 取りうる範囲に制限する
+        # MOOD_MAXとMOOD_MINと比較して、機嫌値が取り得る範囲に収める
         if self.mood > Emotion.MOOD_MAX:
-            self.mood = Emotion.MOOD_MAX
+          self.mood = Emotion.MOOD_MAX
         elif self.mood < Emotion.MOOD_MIN:
-            self.mood = Emotion.MOOD_MIN
+          self.mood = Emotion.MOOD_MIN
