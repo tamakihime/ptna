@@ -64,8 +64,19 @@ class ptna:
             self.responder = self.res_ttyuusenns
         else:
             self.responder = self.res_random
-        print(self.emotion.mood)
-        return self.responder.response(input, self.emotion.mood)
+
+        # 応答フレーズを生成
+        resp = self.responder.response(input, self.emotion.mood)
+        # 学習メソッドを呼ぶ
+        return resp
+
+    def save(seif):
+        """
+        saveメソッドを呼ぶ
+        :return:
+        """
+        seif.dictionary.save()
+
 
 class Emotion:
     """ ピティナの感情モデル

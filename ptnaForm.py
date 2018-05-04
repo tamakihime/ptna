@@ -1,5 +1,7 @@
 import tkinter as tk
 from ptna import *
+from datetime import datetime
+import tkinter.messagebox
 
 """グローバル変数の定義
 """
@@ -10,6 +12,7 @@ action = None
 ptna = ptna('ptna')
 on_canvas = None
 ptyna_image = []
+log = []
 
 
 def putlog(str):
@@ -19,6 +22,7 @@ def putlog(str):
     :return: 対話ログをリストボックスに
     """
     lb.insert(tk.END, str)
+    log.append(str + '\n')
 
 
 def prompt():
@@ -79,7 +83,19 @@ def talk():
 
     change_looks()
 
+def writeLog():
+    """
+    ログファイルに辞書を更新した日時を記録
+    :return:
+    """
+    # ログを追加
 
+    now = 'ptna System Dialouge Log:' + datetime.now().strftime(
+                                '%Y-%m-%d %H:%m::%S' + '\n')
+    log.insert(0, now)
+    # ログファイルを書き込み
+    with open('log.txt', 'a', encoding = 'utf_8') as f:
+        f.writelines(log)
 # ==========================================
 
 # 画面を作成する関数
@@ -101,6 +117,17 @@ def run():
     font = ('Helevetica', 14)
     font_log = ('Helevetica', 11)
 
+    def callback():
+        """
+        終了時の処理
+        :return:
+        """
+        # メッセージボックスの[ok]ボタンクリック時の処理
+        if tkinter.messagebox.askyesno(
+            'Quit?', "ランダム辞書を更新してもいい？"):
+            ptna.save()  # 記憶メソッド実行
+            writeLog()  # ログの保存
+            root_log=('Helevetica')
     # メニューバーの作成
     menubar = tk.Menu(root)
     root.config(menu=menubar)

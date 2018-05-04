@@ -100,7 +100,27 @@ class Dictionary:
             ptn, prs = line.split('\t')
             self.pattern.append(ParseItem(ptn, prs))
 
+    def study(self, input):
+        """
+        :param input: ユーザーの発言
+        :return: 記憶
+        """
+        # ユーザー入力の末尾をどうこうする
+        input = input.rstrip('\n')
+        if not input in self.random:
+            self.random.append(input)
 
+    def save (self):
+        """
+        self roandomの内容をまるごと辞書に突っ込む
+        :return:
+        """
+        # 各要素に末尾に改行を追加する
+        for index, element in enumerate(self.random):
+            self.random[index] = element + '\n'
+        # ランダム辞書に書き込む
+        with open('dictionary/random.txt', 'w', encoding='utf_8') as f:
+            f.writelines(self.random)
 class ParseItem:
     SEPARATOR = '^((-?\d+)##)?(.*)$'
 
