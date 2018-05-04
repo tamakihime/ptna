@@ -71,6 +71,7 @@ class PatternResponder(Responder):
                 return re.sub('%match%', m.group(), self.resp)
         # パターンマッチしない場合はランダム辞書から返す
         return random.choice(self.dictionary.random)
+
 class HasdouResponder(Responder):
     """破道を返すためのサブクラス
     """

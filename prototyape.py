@@ -1,5 +1,6 @@
-from ptna import *
+from math import sin
 
+from ptna import *
 
 def prompt(obj):
     """ピティナのプロントを作る関数
@@ -17,3 +18,4 @@ while True:
         break
     response = ptna.dialogue(inputs)
     print(prompt(ptna), response)
+    print(sin(180));
