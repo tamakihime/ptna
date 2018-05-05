@@ -35,7 +35,7 @@ def prompt():
     p = ptna.name
     if (action.get()) == 0:
         p += ':' + ptna.responder.name
-        return p + '>'
+    return p + '>'
 
 
 def changeImg(img):

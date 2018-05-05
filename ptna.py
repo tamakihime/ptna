@@ -68,6 +68,8 @@ class ptna:
         # 応答フレーズを生成
         resp = self.responder.response(input, self.emotion.mood)
         # 学習メソッドを呼ぶ
+        self.dictionary.study(input)
+        # 応答フレーズを返す
         return resp
 
     def save(self):

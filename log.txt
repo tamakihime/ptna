@@ -110,3 +110,33 @@ ptna:Pattern>正直しんどい
 ptna:Repeat>絶望の上に降臨しそなたをほろぼさんってなに？
 > 屍を打ち倒ししもの
 ptna:Random>テンション下がる～
+ptna System Dialouge Log:2018-05-05 15:05::36
+> 我ここに現れん
+ptna:Pattern>まじすか
+> まじっす
+ptna:Pattern>寝なくてもいいの？
+> いいんすよ
+ptna:Repeat>いいんすよってなに？
+> 闇を切り裂くものだよ
+ptna:Pattern>楽しくなきゃね
+> せやな
+ptna:Random>寝なくてもいいの？
+> 滅びを殺すものだからな
+ptna:Pattern>大丈夫だよ
+> いいんだよ
+ptna:Repeat>いいんだよってなに？
+> すべてを消すもの
+ptna:Repeat>すべてを消すものってなに？
+> 破道
+ptna:破道>破道の二　白雷
+> 破道
+ptna:破道>散在する獣の骨 尖塔・紅晶・鋼鉄の車輪 動けば風 止まれば空 槍打つ音色が虚城に満ちる　破道の六十三　雷吼炮
+> ともに滅びの道をあゆまん
+ptna:Random>って何？
+> 黄昏時に降臨せし終焉の光
+ptna:Repeat>黄昏時に降臨せし終焉の光ってなに？
+> 絶望を呼ぶもの
+ptna:Repeat>絶望を呼ぶものってなに？
+ptna System Dialouge Log:2018-05-05 15:05::08
+> さあ
+ptna>さあってなに？
