@@ -70,12 +70,12 @@ class ptna:
         # 学習メソッドを呼ぶ
         return resp
 
-    def save(seif):
+    def save(self):
         """
         saveメソッドを呼ぶ
         :return:
         """
-        seif.dictionary.save()
+        self.dictionary.save()
 
 
 class Emotion:

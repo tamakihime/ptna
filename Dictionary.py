@@ -110,17 +110,17 @@ class Dictionary:
         if not input in self.random:
             self.random.append(input)
 
-    def save (self):
+    def save(self):
+        """ self.randomの内容をまるごと辞書に書き込む
         """
-        self roandomの内容をまるごと辞書に突っ込む
-        :return:
-        """
-        # 各要素に末尾に改行を追加する
+        # 各要素の末尾に改行を追加する
         for index, element in enumerate(self.random):
-            self.random[index] = element + '\n'
+            self.random[index] = element +'\n'
         # ランダム辞書に書き込む
-        with open('dictionary/random.txt', 'w', encoding='utf_8') as f:
+        with open('dictionary/random.txt', 'w', encoding = 'utf_8') as f:
             f.writelines(self.random)
+
+
 class ParseItem:
     SEPARATOR = '^((-?\d+)##)?(.*)$'
 

@@ -1,0 +1,112 @@
+ptna System Dialouge Log:2018-05-05 15:05::05
+> こんにちは
+ptna:Pattern>あなたはお鍋大好き鍋パーティピーポー
+> なんじゃそりゃ
+ptna:Repeat>なんじゃそりゃってなに？
+> うーん
+ptna:Pattern>御機嫌だね♪
+> そうだね
+ptna:Pattern>面倒くさーい
+> なんでぇ
+ptna:Pattern>何か食べたい
+> 何食べる？
+ptna:Repeat>何食べる？ってなに？
+> ご飯を食べるってことだよ
+ptna:Repeat>ご飯を食べるってことだよってなに？
+> えぇ
+ptna:Random>おなかすいた
+> おなかすいたの
+ptna:Repeat>おなかすいたのってなに？
+> きみの命を刈り取る
+ptna:Pattern>おなかすいた
+> 君の命を刈り取る
+ptna:Repeat>君の命を刈り取るってなに？
+> 命を刈り取る形をしているだろう
+ptna:Pattern>何か忘れてることない？
+> ないと思うけどなぁ
+ptna:Pattern>面倒くさーい
+> またそんな
+ptna:Repeat>またそんなってなに？
+> うーん　なんだろうね
+ptna:Random>今日は暑いね
+> そうだね
+ptna:Pattern>ごめんごめん
+> なんのはなしだよ
+ptna:Pattern>そんなこと知らないもん
+ptna System Dialouge Log:2018-05-05 15:05::43
+> きゃいーん
+ptna:Repeat>きゃいーんってなに？
+> きゃいーん
+ptna:Random>御機嫌だね♪
+> きゃいーん
+ptna:Pattern>おなかすいた
+> さいきょう
+ptna:Pattern>御機嫌だね♪
+> こめ
+ptna:Pattern>それかわいい♪
+> ほし
+ptna:Pattern>何か食べたい
+> ふる
+ptna:Repeat>ふるってなに？
+> うでわ
+ptna:Repeat>うでわってなに？
+> 闇にの方に抱かれて消えろ
+ptna:Random>テンション下がる～
+> なんでぇ
+ptna:Repeat>なんでぇってなに？
+> ともに滅びの道を歩まん
+ptna:Random>それかわいい♪
+> 黄昏時われここに降臨せん
+ptna:Repeat>黄昏時われここに降臨せんってなに？
+> それは君だよ
+ptna:Pattern>しょんぼり
+> なんで？
+ptna:Pattern>それはまずいよ
+> 起こってるの？
+ptna:Pattern>ヘビメタ好き？
+> まぁまぁ
+ptna:Pattern>あれはどうなった？
+ptna System Dialouge Log:2018-05-05 15:05::58
+> いいぇぇい
+ptna:Random>やっぱり疲れてる
+> そんなことないよぉ
+ptna:Repeat>そんなことないよぉってなに？
+> へいへい
+ptna:Pattern>もう夜でしょ
+> 陽気に
+ptna:Pattern>大丈夫だよ
+> なにがだぜぇ
+ptna:Random>歯磨かなきゃ
+> なんじゃそりゅあぁ
+ptna:Repeat>なんじゃそりゅあぁってなに？
+> 黄昏よりもなお暗きもの　夜の闇よりもなお深きもの
+ptna:Pattern>そうでもないんだが
+> 我ソナタをほろぼさん
+ptna:Pattern>テンション下がる～
+> であるからした
+ptna:Pattern>話題変えようよ
+> そうか
+ptna:Pattern>歯磨かなきゃ
+> 大好き
+ptna:Pattern>もう遅い時間だよ
+> 好き
+ptna:Pattern>UFOか
+> かわいいね
+ptna:Repeat>かわいいねってなに？
+> かわいいね
+ptna:Pattern>かわいいってホント！？ホントに！？
+> うん
+ptna:Pattern>それかわいい♪
+> 滅びの道を歩まん
+ptna:Pattern>面倒くさーい
+> いいねぇ
+> いいねぇなんか
+ptna System Dialouge Log:2018-05-05 15:05::22
+> 黄昏時、我ここに降臨せん
+ptna:Repeat>黄昏時、我ここに降臨せんってなに？
+> ともに滅びを求めしもの
+ptna:Pattern>正直しんどい
+> 絶望の上に降臨しそなたをほろぼさん
+ptna:Repeat>絶望の上に降臨しそなたをほろぼさんってなに？
+> 屍を打ち倒ししもの
+ptna:Random>テンション下がる～
