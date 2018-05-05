@@ -1,4 +1,6 @@
 import tkinter as tk
+from tkinter import Tk
+
 from ptna import *
 from datetime import datetime
 import tkinter.messagebox
@@ -108,7 +110,7 @@ def run():
     global entry, response_area, lb, action, on_canvas, ptyna_image, canvas
 
     # メインウィンドウを構築
-    root = tk.Tk()
+    root: Tk = tk.Tk()
     # ウィンドウのサイズを作成
     root.geometry('880x560')
     # ウィンドウのタイトルを変更
@@ -127,14 +129,18 @@ def run():
             'Quit?', "ランダム辞書を更新してもいい？"):
             ptna.save()  # 記憶メソッド実行
             writeLog()  # ログの保存
-            root_log=('Helevetica')
+            root.destroy()
+            # キャンセルボタンクリック
+        else:
+            root.destroy()
+    root.protocol('WM_DELETE_WINDOW', callback)
     # メニューバーの作成
     menubar = tk.Menu(root)
     root.config(menu=menubar)
     # [ファイル]メニュー作成
     filemenu = tk.Menu(menubar)
     menubar.add_cascade(label='オプション', menu=filemenu)
-    filemenu.add_command(label='閉じる', command=root.destroy)
+    filemenu.add_command(label='閉じる', command=callback)
     # オプションメニュー
     action = tk.IntVar()
     optionmenu = tk.Menu(menubar)
