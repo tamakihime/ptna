@@ -140,3 +140,35 @@ ptna:Repeat>絶望を呼ぶものってなに？
 ptna System Dialouge Log:2018-05-05 15:05::08
 > さあ
 ptna>さあってなに？
+ptna System Dialouge Log:2018-05-06 16:05::11
+> こんにちは
+ptna:Pattern>絶望を呼ぶもの
+> なんじゃそりゃ
+ptna:Repeat>なんじゃそりゃってなに？
+> うーん　そうだね
+ptna:Pattern>歯磨かなきゃ
+> 雨が降ってるよ
+ptna:Repeat>雨が降ってるよってなに？
+> 雨降ってますか
+ptna:Repeat>雨降ってますかってなに？
+> 自転車の鍵かけわすれちゃった
+ptna:Random>あなたはお鍋大好き鍋パーティピーポー
+> まーた　そんなこと
+ptna:Pattern>じゃあこれ知ってる？
+> どんなこと
+ptna:Pattern>疲れてるんじゃない？
+> ぴてぃなこそ疲れてるんじゃない？
+ptna:Pattern>まじすか
+ptna System Dialouge Log:2018-05-06 17:05::08
+> こんにちは
+ptna:Pattern>じゃあこれ知ってる？
+> 何お話？
+ptna:Random>絶望を呼ぶもの
+> なんじゃそりゃ
+ptna:Random>そんなこと知らないもん
+> 草も生えない不毛地帯
+ptna:Pattern>ええっ？
+> 髪の毛の色かわいいね
+ptna:Pattern>かわいいってホント！？ホントに！？
+> ほんとだよ　環境変数ってしってる？
+ptna:Repeat>ほんとだよ　環境変数ってしってる？ってなに？

@@ -13,10 +13,11 @@ def analyze(text):
 
     # リストからTokenオブジェクトを一つずつ取り出す
     for token in tokens:
-        result.appned(
+        result.append(
             [token.surface,
              token.part_of_speech])
     return (result)
+
 
 def keyword_check(part):
     """

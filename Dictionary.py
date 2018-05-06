@@ -2,6 +2,7 @@ import random
 import re
 from analyzer import *
 
+
 class Dictionary:
     def __init__(self):
         self.random = []
@@ -76,7 +77,7 @@ class Dictionary:
                 self.ttyuusenn.append(str)
 
         # パターン辞書オープン
-        pfile = open('dictionary/pattern.txt', 'r', encoding = 'utf_8')
+        pfile = open('dictionary/pattern.txt', 'r', encoding='utf_8')
         # 各行を要素としてリストに格納
         p_lines = pfile.readlines()
         pfile.close()
@@ -85,7 +86,7 @@ class Dictionary:
         self.new_lines = []
         for line in p_lines:
             str = line.rstrip('\n')
-            if (str!=''):
+            if (str != ''):
                 self.new_lines.append(str)
 
         # リスト型のインスタンス変数を用意
@@ -122,35 +123,33 @@ class Dictionary:
             self.random.append(input)
 
     def study_pattern(self, input, parts):
-        """
+        """ ユーザーの発言を学習する
 
-        :param インプット文字列:
-        :param 解析結果:
-        :return　なし　動作としては追加:
+            @param input  インプット文字列
+            @param parts  形態素解析の結果（リスト）
         """
-         # 多重リストの要素を二つのパラメータに取り出す
+        # 多重リストの要素を2つのパラメーターに取り出す
         for word, part in parts:
-            # analyzerの分析結果がtrueである場合
+            # analyzerのkeyword_check()関数による名詞チェックが
+            # Trueの場合
             if keyword_check(part):
-                depend = False # parase itemオブジェクトを保持する変数
+                depend = False  # ParseItemオブジェクトを保持する変数
                 # patternリストのpatternキーを反復処理
                 for ptn_item in self.pattern:
-                    m = re.search(ptn_item.pattern, word)
-                    # インプットされた名刺が既存のパターンとしたら
-                    # patternリストからマッチしたparaseitemオブジェクトを取得
+                    # インプットされた名詞が既存のパターンとマッチしたら
+                    # patternリストからマッチしたParseItemオブジェクトを取得
                     if re.search(ptn_item.pattern, word):
                         depend = ptn_item
-                        break
-                    # 既存パターンとマッチしparseItemオブジェクトから
-                    # add_phraseを呼ぶ
-                    if depend:
-                        depend.add_phrase(input)
-
-                    else:
-                        # 既存パターンに存在しない名刺であれば
-                        # 新規のparase Itemオブジェクトを
-                        # patternリストに追加
-                        self.pattern.append(ParseItem(word, input))
+                        break  # マッチしたら止める
+                # 既存パターンとマッチしたParseItemオブジェクトから
+                # add_phraseを呼ぶ
+                if depend:
+                    depend.add_phrase(input)  # 引数はインプット文字列
+                else:
+                    # 既存パターンに存在しない名詞であれば
+                    # 新規のParseItemオブジェクトを
+                    # patternリストに追加
+                    self.pattern.append(ParseItem(word, input))
 
     def save(self):
         """ self.randomの内容をまるごと辞書に書き込む
@@ -166,7 +165,7 @@ class Dictionary:
         pattern = []
         for ptn_item in self.pattern:
             # make_line()で行データを作成
-            pattern.append(ptn_item.make_line + '\n')
+            pattern.append(ptn_item.make_line() + '\n')
             # パターン辞書ファイルに書き込む
             with open('dictionary/pattern.txt', 'w', encoding='utf_8') as f:
                 f.writelines(pattern)
@@ -189,7 +188,7 @@ class ParseItem:
         # インスタンス変数patternにマッチ結果のパターン部分を代入
         self.pattern = m[0][2]
 
-        self.phrases = []  # 応答例を保持するインスタンス変数
+        self.phrases = []  # 応答例を保持するリスト
         self.dic = {}  # インスタンス変数
         # 引数で渡された応答例を'|'で分割し、
         # 個々の要素に対してSEPARATORをパターンマッチさせる
@@ -218,7 +217,7 @@ class ParseItem:
            要素('need''phrase'の辞書)
             'need':数値を
 
-            @ptam mood 現在の機嫌値
+            @param mood 現在の機嫌値
         """
         choices = []
         # self.phrasesが保持するリストの要素（辞書）を反復処理する
@@ -236,12 +235,10 @@ class ParseItem:
         return random.choice(choices)
 
     def suitable(self, need, mood):
-        """インスタンス変数phrases(リスト）の
-           要素('need''phrase'の辞書)
-            'need':数値を
+        """必要機嫌値を現在の機嫌値と比較
 
-            @ptam need 必要機嫌値
-            @ptam mood 現在の機嫌値
+            @param need 必要機嫌値
+            @param mood 現在の機嫌値
         """
         # 必要機嫌値が0であればTrueを返す
         if (need == 0):
@@ -254,28 +251,31 @@ class ParseItem:
             return (mood < need)
 
     def add_phrase(self, phrase):
+        """パターン辞書1行ぶんの応答例のみを作る
+
+            @param phrase インプット文字列
         """
-        パターン辞書一行分の応答例のみを作る
-        :param phrase:
-        :return:
-        """
-        # インプット文字列がphrasesリストの応答例に一致するかどうか
-        # self.phrases インプットにマッチした応答フレーズの辞書リスト
-        # [{need ; 王老齢の整数部分　’phrase応答例の文字列部分}]
+        # インプット文字列がphrasesリストの応答例に一致するか
+        # self.phrases  インプットにマッチした応答フレーズの辞書リスト
+        # [ {'need'  : 応答例の整数部分, 'phrase': 応答例の文字列部分}, ... ]
         for p in self.phrases:
-            # 応答例に一致したら終了
+            # print('phrases===',p)####################
+            # 既存の応答例に一致したら終了
             if p['phrase'] == phrase:
                 return
-            # phrasesリストに文字列を追加
-            # ｛'need'：０、’phrases':phrase｝
-            self.phrases.append({'need': 0, 'phrase': phrase})
+        # phrasesリストに辞書を追加
+        # {'need'  :0, 'phrase':インプット文字列}
+        self.phrases.append({'need': 0, 'phrase': phrase})
 
     def make_line(self):
+        """パターン辞書1行ぶんのデータを作る
         """
-        パターン辞書一行分のデータを作る
-        :return:
-        """
+        # 必要機嫌値 + '##' + パターン
         pattern = str(self.modify) + '##' + self.pattern
         phrases = []
         for p in self.phrases:
-            phrases.append(str(p['need'])+str(p['phrase']))
+            resp = str(p['need']) + '##' + str(p['phrase'])
+            phrases.append(str(p['need']) + '##' + p['phrase'])
+
+        return pattern + '\t' + '|'.join(phrases)
+
