@@ -1,6 +1,6 @@
 import random
 import re
-
+from analyzer import *
 
 class Dictionary:
     def __init__(self):
@@ -100,25 +100,76 @@ class Dictionary:
             ptn, prs = line.split('\t')
             self.pattern.append(ParseItem(ptn, prs))
 
-    def study(self, input):
+    def study(self, input, parts):
         """
         :param input: ユーザーの発言
         :return: 記憶
         """
         # ユーザー入力の末尾をどうこうする
         input = input.rstrip('\n')
+        # インプット文字を引数としてランダム辞書登録用もメソッドを呼ぶ
+        self.study_random(input)
+        # インプット文字と解析結果を引数としパターン辞書の登録メソッドを呼ぶ
+        self.study_pattern(input, parts)
+
+    def study_random(self, input):
+        """
+        ユーザ発言を学習
+        :param input:　ユーザー発言
+        :return:
+        """
         if not input in self.random:
             self.random.append(input)
+
+    def study_pattern(self, input, parts):
+        """
+
+        :param インプット文字列:
+        :param 解析結果:
+        :return　なし　動作としては追加:
+        """
+         # 多重リストの要素を二つのパラメータに取り出す
+        for word, part in parts:
+            # analyzerの分析結果がtrueである場合
+            if keyword_check(part):
+                depend = False # parase itemオブジェクトを保持する変数
+                # patternリストのpatternキーを反復処理
+                for ptn_item in self.pattern:
+                    m = re.search(ptn_item.pattern, word)
+                    # インプットされた名刺が既存のパターンとしたら
+                    # patternリストからマッチしたparaseitemオブジェクトを取得
+                    if re.search(ptn_item.pattern, word):
+                        depend = ptn_item
+                        break
+                    # 既存パターンとマッチしparseItemオブジェクトから
+                    # add_phraseを呼ぶ
+                    if depend:
+                        depend.add_phrase(input)
+
+                    else:
+                        # 既存パターンに存在しない名刺であれば
+                        # 新規のparase Itemオブジェクトを
+                        # patternリストに追加
+                        self.pattern.append(ParseItem(word, input))
 
     def save(self):
         """ self.randomの内容をまるごと辞書に書き込む
         """
         # 各要素の末尾に改行を追加する
         for index, element in enumerate(self.random):
-            self.random[index] = element +'\n'
+            self.random[index] = element + '\n'
         # ランダム辞書に書き込む
-        with open('dictionary/random.txt', 'w', encoding = 'utf_8') as f:
+        with open('dictionary/random.txt', 'w', encoding='utf_8') as f:
             f.writelines(self.random)
+
+        # パターン辞書にファイルを書き込むデータを保持するリスト
+        pattern = []
+        for ptn_item in self.pattern:
+            # make_line()で行データを作成
+            pattern.append(ptn_item.make_line + '\n')
+            # パターン辞書ファイルに書き込む
+            with open('dictionary/pattern.txt', 'w', encoding='utf_8') as f:
+                f.writelines(pattern)
 
 
 class ParseItem:
@@ -202,3 +253,29 @@ class ParseItem:
         else:
             return (mood < need)
 
+    def add_phrase(self, phrase):
+        """
+        パターン辞書一行分の応答例のみを作る
+        :param phrase:
+        :return:
+        """
+        # インプット文字列がphrasesリストの応答例に一致するかどうか
+        # self.phrases インプットにマッチした応答フレーズの辞書リスト
+        # [{need ; 王老齢の整数部分　’phrase応答例の文字列部分}]
+        for p in self.phrases:
+            # 応答例に一致したら終了
+            if p['phrase'] == phrase:
+                return
+            # phrasesリストに文字列を追加
+            # ｛'need'：０、’phrases':phrase｝
+            self.phrases.append({'need': 0, 'phrase': phrase})
+
+    def make_line(self):
+        """
+        パターン辞書一行分のデータを作る
+        :return:
+        """
+        pattern = str(self.modify) + '##' + self.pattern
+        phrases = []
+        for p in self.phrases:
+            phrases.append(str(p['need'])+str(p['phrase']))

@@ -11,7 +11,7 @@ def analyze(text):
     tokens = t.tokenize(text)
     result = []
 
-    # リストからTokenオブ亜いぇくとを一つずつ取り出す
+    # リストからTokenオブジェクトを一つずつ取り出す
     for token in tokens:
         result.appned(
             [token.surface,
