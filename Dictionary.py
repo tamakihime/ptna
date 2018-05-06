@@ -1,5 +1,5 @@
 import random
-import re
+
 from analyzer import *
 
 
@@ -86,7 +86,7 @@ class Dictionary:
         self.new_lines = []
         for line in p_lines:
             str = line.rstrip('\n')
-            if (str != ''):
+            if str != '':
                 self.new_lines.append(str)
 
         # リスト型のインスタンス変数を用意
@@ -124,7 +124,7 @@ class Dictionary:
             # self.templateのキーにcountが存在しなければ
             # count をキーにしてからのリストを要素として追加する
             if not count in self.template:
-                self.template[count]= []
+                self.template[count] = []
             # countキーのリストにテンプレート文字列を追加
             self.template[count].append(template)
 
@@ -139,6 +139,7 @@ class Dictionary:
         self.study_random(input)
         # インプット文字と解析結果を引数としパターン辞書の登録メソッドを呼ぶ
         self.study_pattern(input, parts)
+        self.study_template(parts)
 
     def study_random(self, input):
         """
@@ -186,9 +187,9 @@ class Dictionary:
         """
         template = ''
         count = 0
-        for word ,part in parts:
+        for word, part in parts:
             # 名詞であるかをチェック
-            if (keyword_check(part)):
+            if keyword_check(part):
                 word = '%noun%'
                 count += 1
                 template += word
@@ -201,6 +202,7 @@ class Dictionary:
         # countキーのリストにテンプレート文字列を追加
         if not template in self.template[count]:
             self.template[count].append(template)
+        print('できあがったテンプレート＝＝＝', self.template)
 
     def save(self):
         """ self.randomの内容をまるごと辞書に書き込む
@@ -220,6 +222,18 @@ class Dictionary:
             # パターン辞書ファイルに書き込む
             with open('dictionary/pattern.txt', 'w', encoding='utf_8') as f:
                 f.writelines(pattern)
+        template = []
+        # self.tenplateのすべてのキーと値のペアの取得して
+        # 反復処理を行う
+        for key, val in self.template.items():
+            # 値のリストをイテレートする
+            for v in val:
+                template.append(key + '\t' + v + '\n')
+        # リストの内のテンプレートをソート
+        template.sort()
+        # テンプレート辞書ファイルに書き込む
+        with open('dictionary/template.txt', 'w', encoding='utf_8') as f:
+            f.writelines(template)
 
 
 class ParseItem:
@@ -279,7 +293,7 @@ class ParseItem:
             if (self.suitable(p['need'], mood)):
                 choices.append(p['phrase'])
         # choicesリストが空であればNoneを返す
-        if (len(choices) == 0):
+        if len(choices) == 0:
             return None
             # choicesリストが空でなければランダムに
             # 応答文字列を選択して返す
@@ -292,14 +306,14 @@ class ParseItem:
             @param mood 現在の機嫌値
         """
         # 必要機嫌値が0であればTrueを返す
-        if (need == 0):
+        if need == 0:
             return True
         # 必要機嫌値がプラスの場合は機嫌値が必要機嫌値を超えているか判定
-        elif (need > 0):
-            return (mood > need)
+        elif need > 0:
+            return mood > need
         # 応答例の数値がマイナスの場合は機嫌値が下回っているか判定
         else:
-            return (mood < need)
+            return mood < need
 
     def add_phrase(self, phrase):
         """パターン辞書1行ぶんの応答例のみを作る
@@ -329,4 +343,3 @@ class ParseItem:
             phrases.append(str(p['need']) + '##' + p['phrase'])
 
         return pattern + '\t' + '|'.join(phrases)
-

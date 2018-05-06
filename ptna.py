@@ -30,6 +30,8 @@ class ptna:
         self.res_tyuusenn = tyuusennResponder('抽選', self.dictionary)
         # ttyuusenn
         self.res_ttyuusenns = ttyuusennResponder('抽選', self.dictionary)
+        # Template respondeer
+        self.res_template = TemplateResponder('Template', self.dictionary)
         # 初期値をセット
         self.responder = self.res_what
 
@@ -52,10 +54,12 @@ class ptna:
             x = 30000
         if input == '抽選　':
             x = 40000
-        if x <= 60:
+        if x <= 40:
             self.responder = self.res_pattern
+        elif x <= 70:
+            self.responder = self.res_template
         elif x <= 90:
-            self.responder = self.res_what
+            self.responder = self.res_random
         elif x == 10000:
             self.responder = self.res_hadou
         elif x == 20000:
@@ -65,7 +69,7 @@ class ptna:
         elif x == 40000:
             self.responder = self.res_ttyuusenns
         else:
-            self.responder = self.res_random
+            self.responder = self.res_what
 
         # 応答フレーズを生成
         resp = self.responder.response(input, self.emotion.mood)
