@@ -101,6 +101,33 @@ class Dictionary:
             ptn, prs = line.split('\t')
             self.pattern.append(ParseItem(ptn, prs))
 
+        # テンプレート辞書格納よインスタンス生成
+        self.template = {}
+        # パターン辞書のデータを使うためパターン辞書のデータをオープン
+        tefile = open('dictionary/template.txt', 'r', encoding='utf_8')
+        # 各行を要素としてリストに格納
+        te_lines = tefile.readline()
+        tefile.close()
+        # 各行の開業と空這う文字を取り除いて
+        # インスタンス変数にか苦悩する
+        self.new_te_lines = []
+        for line in te_lines:
+            str = line.rstrip('\n')
+            if str != '':
+                self.new_te_lines.append(str)
+        # テンプレート辞書の各行をタブで切り分ける
+        # count %noun%の出現回数
+        # template　テンプレート文字列
+        for line in self.new_te_lines:
+            # まずは分割
+            count, template = line.split('\t')
+            # self.templateのキーにcountが存在しなければ
+            # count をキーにしてからのリストを要素として追加する
+            if not count in self.template:
+                self.template[count]= []
+            # countキーのリストにテンプレート文字列を追加
+            self.template[count].append(template)
+
     def study(self, input, parts):
         """
         :param input: ユーザーの発言
@@ -150,6 +177,30 @@ class Dictionary:
                     # 新規のParseItemオブジェクトを
                     # patternリストに追加
                     self.pattern.append(ParseItem(word, input))
+
+    def study_template(self, parts):
+        """
+
+        :param patrs 形態素解析の結果:
+        :return:
+        """
+        template = ''
+        count = 0
+        for word ,part in parts:
+            # 名詞であるかをチェック
+            if (keyword_check(part)):
+                word = '%noun%'
+                count += 1
+                template += word
+        # self.templateのキーにしてからのリストを要素として追加
+        # countをキーにしてからのリストを要素として追加
+        if count > 0:
+            count = str(count)
+            if not count in self.template:
+                self.template[count] = []
+        # countキーのリストにテンプレート文字列を追加
+        if not template in self.template[count]:
+            self.template[count].append(template)
 
     def save(self):
         """ self.randomの内容をまるごと辞書に書き込む
