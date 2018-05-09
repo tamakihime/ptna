@@ -48,8 +48,7 @@ class RandomResponder(Responder):
 
 
 class PatternResponder(Responder):
-    """
-    パターン反応用サブクラス
+    """ パターンに反応するためのサブクラス
     """
     def response(self, input, mood, parts):
         """ パターンにマッチした場合に応答文字列を作って返す
@@ -62,7 +61,7 @@ class PatternResponder(Responder):
             m = ptn_item.match(input)
             # マッチした場合は機嫌値moodを引数にしてchoice()を実行、
             # 戻り値の応答文字列、またはNoneを取得
-            if m:
+            if (m):
                 self.resp = ptn_item.choice(mood)
             # choice()の戻り値がNoneでない場合は
             # 応答例の中の%match%をインプットされた文字列内の
@@ -98,16 +97,16 @@ class TemplateResponder(Responder):
         count = len(keyword)
         # keywordリストに一つ以上の名詞が存在し、
         # 名詞の数に対応するテンプレートが存在するかを確認
-        if (count< 0) and (str(count) in self.dictionary.template):
+        if (count > 0) and (str(count) in self.dictionary.template):
             # kewwordリストに1つ以上の名詞が存在し
             # 名詞の数に対応するテンプレートが存在しするかをチェック
             template = random.choice(self.dictionary.template[str(count)])
             # テンプレートの空欄に
             # keywordに格納されている名詞を埋め込む
             for word in keyword:
-                template = template.replace('%noun', word, 1)
+                template = template.replace('%noun%', word, 1)
             return template
-        return random.choices(self.dictionary.random)
+        return random.choice(self.dictionary.random)
 
 
 class HasdouResponder(Responder):

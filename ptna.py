@@ -45,7 +45,9 @@ class ptna:
         # インプット文字を解析
         parts = analyze(input)
         # 0か１をランダムセレクト 0ならrandomresponder をセット　1ならrepeatresponderをセット
-        x = random.randint(0, 100)
+        x = 70
+        # x = random.randint(0, 100)
+
         if input == "野口くん発言集":
             x = 20000
         if input == "破道":
@@ -72,7 +74,7 @@ class ptna:
             self.responder = self.res_what
 
         # 応答フレーズを生成
-        resp = self.responder.response(input, self.emotion.mood)
+        resp = self.responder.response(input, self.emotion.mood,parts)
         # 学習メソッドを呼ぶ
         self.dictionary.study(input, parts)
         # 応答フレーズを返す

@@ -1,8 +1,6 @@
-import tkinter as tk
-from tkinter import Tk
-
 from ptna import *
 from datetime import datetime
+import tkinter as tk
 import tkinter.messagebox
 
 """グローバル変数の定義
@@ -61,26 +59,25 @@ def change_looks():
 
 
 def talk():
-    """
-    対話を行う関数
-    ptnaクラスのdialonguを実行　応答メッセージを取得すr
-    :return: 入力文字列　応答メッセージ
-    """
+    """ 対話を行う関数
+            ・Ptnaクラスのdialogue()を実行して応答メッセージを取得
+            ・入力文字列およかわいいび応答メッセージをログに出力
+        """
     value = entry.get()
-    # 入力エリアに何も存在しなければ
+    # 入力エリアが未入力の場合
     if not value:
-        response_area.configure(text='なに？')
-    # 入力が存在すれば対話オブジェクトを実行
+        response_area.configure(text='なに?')
+    # 入力されていたら対話オブジェクトを実行
     else:
-        # 入力文字を因数にしてdialogue()の結果を取得
+        # 入力文字列を引数にしてdialogue()の結果を取得
         response = ptna.dialogue(value)
         # 応答メッセージを表示
         response_area.configure(text=response)
-        # 入力文字列引数にしてputolog()を呼ぶ
+        # 入力文字列引数にしてputlog()を呼ぶ
         putlog('> ' + value)
-        # 応答文字列を引数にしてputlogを呼ぶ
-        putlog(prompt() + response)
-        # 入力データをクリア
+        # 応答メッセージを引数にしてputlog()を呼ぶ
+        putlog(prompt()+response)
+        # 入力エリアをクリア
         entry.delete(0, tk.END)
 
     change_looks()
@@ -110,7 +107,7 @@ def run():
     global entry, response_area, lb, action, on_canvas, ptyna_image, canvas
 
     # メインウィンドウを構築
-    root: Tk = tk.Tk()
+    root = tk.Tk()
     # ウィンドウのサイズを作成
     root.geometry('880x560')
     # ウィンドウのタイトルを変更

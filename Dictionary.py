@@ -14,7 +14,6 @@ class Dictionary:
 
         # 末尾の改行と空白文字を取り除いて
         # インスタンス変数（リスト）に格納
-        self.random = []
         for line in r_lines:
             str = line.rstrip('\n')
             if str != '':
@@ -51,13 +50,13 @@ class Dictionary:
         # 抽選見せよう辞書格納ようのインスタンス構築
         self.tyuusenn = []
         # 抽選見せよう辞書をオープン
-        tfile = open('dictionary/tyuusenn.txt', 'r', encoding='utf_8')
+        tyufile = open('dictionary/tyuusenn.txt', 'r', encoding='utf_8')
         # 各行を用佐とするリストを取得
-        t_lines = tfile.readlines()
-        tfile.close()
+        tyu_lines = tyufile.readlines()
+        tyufile.close()
         # 末尾の改行と空白文字を取り除いてインスタンス変数に格納
         self.tyuusenn = []
-        for line in t_lines:
+        for line in tyu_lines:
             str = line.rstrip('\n')
             if str != '':
                 self.tyuusenn.append(str)
@@ -68,7 +67,7 @@ class Dictionary:
         ttfile = open('dictionary/tyuusenn1.txt', 'r', encoding='utf_8')
         # 各行を用佐とするリストを取得
         tt_lines = ttfile.readlines()
-        tfile.close()
+        ttfile.close()
         # 末尾の改行と空白文字を取り除いてインスタンス変数に格納
         self.ttyuusenn = []
         for line in tt_lines:
@@ -101,28 +100,36 @@ class Dictionary:
             ptn, prs = line.split('\t')
             self.pattern.append(ParseItem(ptn, prs))
 
-        # テンプレート辞書格納よインスタンス生成
+
+        # テンプレート辞書を保持する辞書
         self.template = {}
-        # パターン辞書のデータを使うためパターン辞書のデータをオープン
-        tefile = open('dictionary/template.txt', 'r', encoding='utf_8')
+        # パターン辞書ファイルオープン
+        tfile = open('dictionary/template.txt', 'r', encoding = 'utf_8')
         # 各行を要素としてリストに格納
-        te_lines = tefile.readline()
-        tefile.close()
-        # 各行の開業と空這う文字を取り除いて
-        # インスタンス変数にか苦悩する
-        self.new_te_lines = []
-        for line in te_lines:
+        t_lines = tfile.readlines()
+
+        #print(t_lines)
+        tfile.close()
+
+        # 末尾の改行と空白文字を取り除いて
+        # インスタンス変数（リスト）に格納
+        self.new_t_lines = []
+        for line in t_lines:
             str = line.rstrip('\n')
-            if str != '':
-                self.new_te_lines.append(str)
+            if str!='':
+                self.new_t_lines.append(str)
+            #print(self.new_t_lines)
+
         # テンプレート辞書の各行をタブで切り分ける
-        # count %noun%の出現回数
-        # template　テンプレート文字列
-        for line in self.new_te_lines:
-            # まずは分割
+        # count    %noun%の出現回数
+        # template テンプレート文字列
+        # ParseItemオブジェクトを生成(引数はptn、prs）して
+        # インスタンス変数pattern（リスト）に追加
+        for line in self.new_t_lines:
+            # テンプレート行をタブでcount, templateに分割
             count, template = line.split('\t')
-            # self.templateのキーにcountが存在しなければ
-            # count をキーにしてからのリストを要素として追加する
+            # self.templateのキーにcount(出現回数)が存在しなければ
+            # countをキーにして空のリストを要素として追加
             if not count in self.template:
                 self.template[count] = []
             # countキーのリストにテンプレート文字列を追加
@@ -192,16 +199,17 @@ class Dictionary:
             if keyword_check(part):
                 word = '%noun%'
                 count += 1
-                template += word
+            template += word
         # self.templateのキーにしてからのリストを要素として追加
         # countをキーにしてからのリストを要素として追加
         if count > 0:
             count = str(count)
+
             if not count in self.template:
                 self.template[count] = []
         # countキーのリストにテンプレート文字列を追加
-        if not template in self.template[count]:
-            self.template[count].append(template)
+            if not template in self.template[count]:
+                self.template[count].append(template)
         print('できあがったテンプレート＝＝＝', self.template)
 
     def save(self):

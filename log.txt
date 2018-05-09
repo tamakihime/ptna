@@ -172,3 +172,205 @@ ptna:Pattern>ええっ？
 ptna:Pattern>かわいいってホント！？ホントに！？
 > ほんとだよ　環境変数ってしってる？
 ptna:Repeat>ほんとだよ　環境変数ってしってる？ってなに？
+ptna System Dialouge Log:2018-05-09 15:05::17
+> 野口君発言集
+ptna:Pattern>いいんすよ
+> 抽選
+ptna:抽選>山本
+> 抽選　
+ptna:抽選>ちゃん
+> 破道
+ptna:破道>破道の五十七　大地転踊
+ptna System Dialouge Log:2018-05-09 15:05::20
+> こんにちは
+ptna:Pattern>いいんだよ
+> なにがいいの？
+> 雨は降ってないよ
+ptna System Dialouge Log:2018-05-09 15:05::58
+> こんにちは
+ptna:Pattern>ラーメン作ろうかな
+> なんでらーめん？
+ptna:Pattern>自分でも作るよ
+> そうなんだ
+ptna:Pattern>疲れてるんじゃない？
+> 疲れてないよ
+ptna:Random>今やろうと思ったのに！
+> なにを？
+ptna:Pattern>最近どう
+> 調子は悪くない
+ptna:Pattern>そんなこと知らないもん
+> なんで？
+ptna:Repeat>なんで？ってなに？
+ptna System Dialouge Log:2018-05-09 16:05::40
+> こんにちわ
+> どういうこと？
+> ふってるの？
+ptna System Dialouge Log:2018-05-09 16:05::50
+> ぱりぱり
+ptna System Dialouge Log:2018-05-09 16:05::38
+> こんにちは
+ptna:Random>やっぱり疲れてる
+> 最近調子はどう？
+ptna:Pattern>調子は悪くない
+> そっか　楽しいこととかある
+ptna:Pattern>闇を切り裂くものだよ
+> 何それ？ｗ
+ptna:Pattern>そろそろ寝なきゃね
+> まだ寝たくないなぁ
+> まだ寝たくないなぁ
+ptna:Pattern>草も生えない不毛地帯
+> ぱたーん
+ptna:Template>ぱた%はー%なのかね
+> パターン応答してるね
+ptna:Pattern>ぱたーん
+> たおれた
+ptna:Repeat>たおれたってなに？
+> ばったーんってこと
+ptna:Pattern>ぱたーん
+> かわいいね
+ptna:Pattern>かわいいってホント！？ホントに！？
+> 本当だよ
+ptna:Random>闇を切り裂くものだよ
+> なにそれ
+ptna:Pattern>まだ寝たくないなぁ
+> そっか
+ptna:Pattern>お花畑にひまわりが咲いている
+> それはきれいだね
+ptna:Random>そっか　楽しいこととかある
+> うん
+ptna:Pattern>髪の毛の色かわいいね
+> いい感じ
+ptna:Pattern>正直しんどい
+> えぇそうなの
+ptna:Template>それはぇそうなの%だね
+ptna System Dialouge Log:2018-05-09 16:05::15
+> 小鳥が鳴いてるよ
+ptna:Template>うん、小鳥%
+ptna System Dialouge Log:2018-05-09 16:05::55
+> はろ
+> そうなの？
+> なんかエラーで照るなぁ
+ptna:Template>カッコいいかも、でも今はエラーじゃないね
+> テンプレート応答はできるのか
+ptna:Template>テンプレートの応答にです
+> なにがもんだいなのかな
+ptna:Template>いはないでしょ
+> 再現性がないバグは困るなぁ
+ptna:Template>まだ早い時間だから再現のバグしようよ
+> いいねぇ
+ptna System Dialouge Log:2018-05-09 16:05::44
+> はろ
+ptna:Random>いいんだよ
+> なにがいいの？
+ptna:Random>ともに滅びの道をあゆまん
+> 物騒だね
+ptna:Random>それいいじゃない
+ptna System Dialouge Log:2018-05-09 16:05::14
+> さらば
+> さらば地球よ
+ptna:Template>地球は悪くない
+> 旅立つ船は
+ptna:Template>今日の船はなんだね？
+> 宇宙
+ptna:Template>宇宙ではありません
+> 戦艦
+ptna:Template>戦艦ねえ...
+ptna System Dialouge Log:2018-05-09 16:05::04
+> ハルマゲドン
+ptna:Pattern>ラーメン作ろうかな
+> 何でラーメン
+ptna:Pattern>自分でも作るよ
+> そうなんだ
+ptna:Pattern>こんにちは
+ptna System Dialouge Log:2018-05-09 16:05::13
+> ちょ
+ptna:Pattern>絶望を呼ぶもの
+> ぱや
+ptna:Pattern>うわ
+> 上手なんだよ
+ptna:Pattern>御機嫌だね♪
+> まあまあ
+ptna:Pattern>まーた　そんなこと
+> ぶらんち
+ptna:Pattern>うーん　そうだね
+> ほね
+ptna:Pattern>しょんぼり
+> しょんぼりしちゃた
+ptna:Pattern>スポーツって好き？
+> まぁまぁ
+ptna:Pattern>旅立つ船は
+ptna System Dialouge Log:2018-05-09 16:05::04
+> ちょべりば
+ptna:Random>雨降ってますか
+> ふってないよ
+ptna:Random>そろそろ寝なきゃね
+> うんそうだね
+ptna:Random>そうなの？
+> そうだよ
+ptna:Random>草も生えない不毛地帯
+ptna System Dialouge Log:2018-05-09 16:05::48
+> なんじやそりゃ
+ptna:Repeat>なんじやそりゃってなに？
+> とまと
+ptna:Repeat>とまとってなに？
+> ほめほえｍ
+ptna:Repeat>ほめほえｍってなに？
+ptna System Dialouge Log:2018-05-09 16:05::36
+> しゃらんきゅう
+ptna:Template>ゃらんきゅうがでしょ！
+> 米をよく食べます
+ptna:Template>米が問題だね
+> そうだね
+ptna System Dialouge Log:2018-05-09 16:05::36
+> hu
+ptna>なにがもんだhuなのかな
+> なにそれ
+ptna System Dialouge Log:2018-05-09 16:05::03
+> u
+ptna:Pattern>疲れてないよ
+> f
+ptna:Pattern>ぱたーん
+> m
+ptna:Pattern>こんにちは
+> f
+ptna:Pattern>f
+> f
+ptna:Pattern>f
+> e
+ptna:Pattern>何それ？ｗ
+> 草原
+ptna:Pattern>草も生えない不毛地帯
+> 鳥の声
+ptna:Pattern>雨は降ってないよ
+> とりのこえ
+ptna:Pattern>ええっ？
+> とりのこえ
+ptna:Pattern>とりのこえ
+ptna System Dialouge Log:2018-05-09 16:05::04
+> こめこめ
+ptna:Pattern>こめこめ
+> こめりょう
+ptna:Pattern>こめこめ
+> なんじゃらほい
+ptna:Pattern>なにがもんだいなのかな
+> もんだいじゃないけど
+ptna:Pattern>なにがもんだいなのかな
+ptna System Dialouge Log:2018-05-09 16:05::37
+> そんなオカルトあり得ません
+ptna:Template>ときどきオカルトの話しているから
+> おぉすごいなぁ
+ptna:Template>喉かわいた
+> ランダム辞書もちゃんと返せてる
+ptna:Template>ランダム見ちゃ辞書だよ
+> 今のは早く寝る的なやつ
+ptna:Template>そろそろ寝なきゃね
+> そうだね
+ptna:Template>うわ
+> どうしたの
+ptna:Template>ちょ
+> まてよ
+ptna:Template>ええっ？
+> きれいな応答してるね
+ptna:Template>きれいは応答のときにやるんだよ
+> それは違うな　かわいいよ
+ptna:Template>疲れてるんじゃない？
