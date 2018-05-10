@@ -45,8 +45,7 @@ class ptna:
         # インプット文字を解析
         parts = analyze(input)
         # 0か１をランダムセレクト 0ならrandomresponder をセット　1ならrepeatresponderをセット
-        x = 70
-        # x = random.randint(0, 100)
+        x = random.randint(0, 100)
 
         if input == "野口くん発言集":
             x = 20000

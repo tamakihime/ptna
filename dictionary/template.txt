@@ -85,6 +85,7 @@
 1	なるほど、%noun%だね
 1	なんか%noun%で照るなぁ
 1	なんじ%noun%
+1	はろ%noun%
 1	ばいばい%noun%
 1	ぷぷぷ%noun%だって
 1	やっぱり%noun%だ
@@ -133,6 +134,7 @@
 2	なんでら%noun%%noun%？
 2	ぷぷぷ、%noun%は%noun%ってさ
 2	まだ早い時間だから%noun%の%noun%しようよ
+2	突然の%noun%%noun%
 3	%noun%の%noun%に%noun%が咲いてるよ
 3	%noun%は%noun%で%noun%なのかな？よくわかりませんが
 3	%noun%は%noun%とか%noun%じゃないと思うゾ

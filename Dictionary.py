@@ -210,7 +210,7 @@ class Dictionary:
         # countキーのリストにテンプレート文字列を追加
             if not template in self.template[count]:
                 self.template[count].append(template)
-        print('できあがったテンプレート＝＝＝', self.template)
+        # print('できあがったテンプレート＝＝＝', self.template)
 
     def save(self):
         """ self.randomの内容をまるごと辞書に書き込む

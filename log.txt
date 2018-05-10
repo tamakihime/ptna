@@ -374,3 +374,17 @@ ptna:Template>ええっ？
 ptna:Template>きれいは応答のときにやるんだよ
 > それは違うな　かわいいよ
 ptna:Template>疲れてるんじゃない？
+ptna System Dialouge Log:2018-05-10 09:05::44
+ptna System Dialouge Log:2018-05-10 09:05::58
+> はろー
+ptna:Template>ーじゃないよ
+> なんでよ
+ptna:Template>バイバイキーン
+> 突然のバイバイキン
+ptna:Template>バイバイはキン？
+> 違うよ
+ptna:Template>我ここに現れん
+> 何じゃそれ
+ptna:Template>せやな
+> なにがせやなや
+ptna:Template>まぁまぁ
