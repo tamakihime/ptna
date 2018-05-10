@@ -49,7 +49,37 @@ def generate():
     :return:
     """
     global sentence
-    count = 0
     #　markovのキーをランダムに抽出し、プレフィックス1～3に代入
     p1,p2,p3 =random.choice(list(markov.keys()))
-    count += 1
+    count=0
+    while count< len(worldlist):
+        # 文章にする単語を取得
+        if((p1,p2,p3) in markov)==True:
+            # 文章にする単語を取得
+            tmp = random.choice(markov[(p1, p2, p3)])
+            # 取得した単語をsentenceに追加
+            sentence += tmp
+        # 3つのプレフィックスの値を置き換える
+        p1, p2, p3 = p2, p3, tmp
+        count += 1
+
+    # 最初に出てくる句点までを取り除く
+    sentence = re.sub('^.+?。', '', sentence)
+    # 最後の句点から先を取り除く
+    if re.search('.+。',sentence):
+        sentence = re.search('.+。', sentence)
+    # 閉じ括弧を削除
+    sentence = re.sub('」', '', sentence)
+    # 開き括弧を削除
+    sentence = re.sub('「', '', sentence)
+    # 全角スペースを削除
+    sentence = re.sub('　', '', sentence)
+
+def overlap():
+    """
+    重複した文章を取り除く
+    :return:
+    """
+    global sentence
+    # 「。」のところで分割してリストにする
+    sentence = sentence.split('。')
