@@ -18,19 +18,19 @@ def parase(text):
 
 
 filename = "text.txt"
-with open(filename,"r",encoding='utf_8') as f:
+with open(filename, "r", encoding='utf_8') as f:
     text =f.read()
 # 文末の改行文字を取り除く
 text = re.sub("\n", "", text)
 # 形態素の部分のをリストとして取得
-worldlist = parase(text)
+wordlist = parase(text)
 
 # マルコフ辞書の作成
 markov = {}
-pl = ''
+p1 = ''
 p2 = ''
 p3 = ''
-for word in worldlist:
+for word in wordlist:
     # p1,p2,p3のすべてに値が収納されているかどうかをチェック
     if p1 and p2 and p3:
         # makovに（ｐ1，ｐ2，ｐ3)
@@ -43,16 +43,17 @@ for word in worldlist:
 
 sentence = ''
 
+
 def generate():
     """
     マルコフ辞書から文書を作り出す
     :return:
     """
     global sentence
-    #　markovのキーをランダムに抽出し、プレフィックス1～3に代入
+    # markovのキーをランダムに抽出し、プレフィックス1～3に代入
     p1,p2,p3 =random.choice(list(markov.keys()))
     count=0
-    while count< len(worldlist):
+    while count< len(wordlist):
         # 文章にする単語を取得
         if((p1,p2,p3) in markov)==True:
             # 文章にする単語を取得
@@ -67,7 +68,7 @@ def generate():
     sentence = re.sub('^.+?。', '', sentence)
     # 最後の句点から先を取り除く
     if re.search('.+。',sentence):
-        sentence = re.search('.+。', sentence)
+        sentence = re.search('.+。', sentence).group()
     # 閉じ括弧を削除
     sentence = re.sub('」', '', sentence)
     # 開き括弧を削除
@@ -83,3 +84,25 @@ def overlap():
     global sentence
     # 「。」のところで分割してリストにする
     sentence = sentence.split('。')
+    if '' in sentence:
+        sentence.remove('')
+
+    new = []
+    for str in sentence:
+        str = str + '。'
+        if str == '。':
+            break
+        new.append(str)
+    new = set(new)
+    sentence = ''.join(new)
+
+while not sentence:
+    generate()
+    overlap()
+
+
+#=======================
+#実行ブロック
+#=======================
+if __name__ == '__main__':
+    print(sentence)
