@@ -58,6 +58,7 @@
 1	え%noun%
 1	え、やだな、%noun%
 1	え？%noun%？
+1	お%noun%
 1	おいおい、それはこっちの%noun%だよ
 1	おお%noun%！
 1	かわいい%noun%
@@ -90,12 +91,15 @@
 1	ぷぷぷ%noun%だって
 1	やっぱり%noun%だ
 1	やっほー%noun%
+1	よしだってお%noun%だよね
 1	カッコいいかも、でも今は%noun%じゃないね
 1	今日の%noun%はなんだね？
 1	何で%noun%
+1	何の%noun%？
 1	旅立つ%noun%は
 1	最近%noun%はどう？
 1	最近、%noun%にはまってるんだ
+1	破%noun%
 2	%noun%%noun%
 2	%noun%%noun%してるね
 2	%noun%%noun%じゃないけど
@@ -130,6 +134,7 @@
 2	%noun%性がない%noun%は困るなぁ
 2	%noun%見ちゃ%noun%だよ
 2	%noun%？%noun%？
+2	おまえのかあちゃんで%noun%%noun%
 2	そんなに%noun%悪いなら寝てなきゃ%noun%だよ
 2	なんでら%noun%%noun%？
 2	ぷぷぷ、%noun%は%noun%ってさ

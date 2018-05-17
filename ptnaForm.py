@@ -123,7 +123,7 @@ def run():
         """
         # メッセージボックスの[ok]ボタンクリック時の処理
         if tkinter.messagebox.askyesno(
-            'Quit?', "ランダム辞書を更新してもいい？"):
+            'Quit?', "辞書を更新してもいい？"):
             ptna.save()  # 記憶メソッド実行
             writeLog()  # ログの保存
             root.destroy()

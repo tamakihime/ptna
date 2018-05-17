@@ -388,3 +388,40 @@ ptna:Template>我ここに現れん
 ptna:Template>せやな
 > なにがせやなや
 ptna:Template>まぁまぁ
+ptna System Dialouge Log:2018-05-10 14:05::27
+> 草
+ptna:Pattern>草も生えない不毛地帯
+ptna System Dialouge Log:2018-05-10 14:05::32
+> おちんちん
+ptna:Pattern>草も生えない不毛地帯
+> なんなんだおまえ
+ptna:Template>なにそれ
+> おっぱい
+ptna:Pattern>なんじゃらほい
+ptna System Dialouge Log:2018-05-12 22:05::45
+> 破道
+ptna:Template>なんじ道
+> 破道
+ptna:破道>破道の二　白雷
+> 破道
+ptna:破道>破道の九十六　一刀火葬
+> よしだっておばかだよね
+ptna:Pattern>ぷんすか！
+> 破道
+ptna:破道>破道の三　綴雷電
+> 破道
+ptna:破道>﻿破道の一　衝
+> 抽選
+ptna:抽選>波多野
+> 抽選
+ptna:抽選>二瓶
+> 抽選　
+ptna:抽選>高瀬
+> おまえのかあちゃんでーべそ
+ptna:Random>何か忘れてることない？
+> 何のはなし？
+ptna:Template>しはなし
+> はぁ
+ptna:Pattern>ふってないよ
+> かわいい
+ptna:Pattern>きれいな応答してるね
