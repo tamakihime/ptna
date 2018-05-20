@@ -33,4 +33,4 @@ def parse(text):
     result = []
     for token in tokens:
         result.append(token.surface)
-        return (result)
+    return (result)

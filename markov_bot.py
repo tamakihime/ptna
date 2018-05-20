@@ -15,6 +15,7 @@ class Markov:
             text = f.read()
         text = re.sub("\n", "", text)
         wordlist = parse(text)
+
         # マルコフ辞書の作成
         markov = {}
         p1 = ''
@@ -60,6 +61,7 @@ class Markov:
         sentence = re.sub("　", "", sentence)
 
         # 生成した文章を戻り値として返す
+        return sentence
 
 
 ##################################
